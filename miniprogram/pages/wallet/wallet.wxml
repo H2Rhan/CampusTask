@@ -1,0 +1,15 @@
+<view class="wallet-hero">
+  <view class="lbl">可用余额（元）</view>
+  <view class="num">{{wallet.balance.toFixed(2)}}</view>
+  <view class="frozen">冻结中 ¥{{wallet.frozen.toFixed(2)}}</view>
+</view>
+
+<view class="card">
+  <view class="section-title">充值（演示环境）</view>
+  <view class="quick-amounts">
+    <view wx:for="{{['10','20','50','100']}}" wx:key="*this" class="qa" data-value="{{item}}" bindtap="quickAmount">¥{{item}}</view>
+  </view>
+  <input class="amount-input" type="digit" placeholder="自定义金额" value="{{amount}}" bindinput="onAmount" />
+  <button class="btn-primary" bindtap="recharge">确认充值</button>
+  <view class="hint">正式上线将接入微信支付，平台不托管资金</view>
+</view>

@@ -1,0 +1,27 @@
+<view class="login-page">
+  <view class="brand">
+    <view class="logo">邻行</view>
+    <view class="slogan">让任务来找顺路的你</view>
+  </view>
+
+  <view class="card form">
+    <view class="field">
+      <input data-field="student_no" placeholder="学号" value="{{student_no}}" bindinput="onInput" />
+    </view>
+    <view class="field" wx:if="{{mode === 'register'}}">
+      <input data-field="name" placeholder="姓名" value="{{name}}" bindinput="onInput" />
+    </view>
+    <view class="field" wx:if="{{mode === 'register'}}">
+      <input data-field="college" placeholder="学院（如：计算机学院）" value="{{college}}" bindinput="onInput" />
+    </view>
+    <view class="field">
+      <input data-field="password" password placeholder="密码" value="{{password}}" bindinput="onInput" />
+    </view>
+    <button class="btn-primary submit" loading="{{loading}}" bindtap="submit">
+      {{mode === 'login' ? '登录' : '注册并认证校园身份'}}
+    </button>
+    <view class="switch" bindtap="switchMode">
+      {{mode === 'login' ? '没有账号？注册' : '已有账号？登录'}}
+    </view>
+  </view>
+</view>

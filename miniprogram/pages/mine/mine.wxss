@@ -1,0 +1,19 @@
+.profile { }
+.name-row { display: flex; align-items: center; margin-bottom: 8rpx; }
+.name { font-size: 38rpx; font-weight: 600; margin-right: 16rpx; }
+.verified { color: #00b42a; font-size: 22rpx; }
+.credit-row { display: flex; margin-top: 28rpx; }
+.credit-item { flex: 1; text-align: center; }
+.credit-item .num { display: block; font-size: 40rpx; font-weight: 700; color: #165dff; }
+.credit-item .lbl { font-size: 22rpx; color: #86909c; }
+.wallet-card { }
+.balance { font-size: 44rpx; font-weight: 700; color: #1d2129; margin-top: 8rpx; }
+.frozen { font-size: 22rpx; color: #86909c; font-weight: 400; margin-left: 16rpx; }
+.section-title { font-weight: 600; margin-bottom: 16rpx; }
+.route-item { padding: 12rpx 0; color: #4e5969; }
+.route-input-row { display: flex; margin-top: 16rpx; }
+.route-input { flex: 1; background: #f7f8fa; border-radius: 12rpx; padding: 14rpx 20rpx; margin-right: 16rpx; font-size: 26rpx; }
+.add-btn { background: #165dff; color: #fff; border-radius: 12rpx; font-size: 26rpx; padding: 0 32rpx; }
+.my-task { display: flex; align-items: center; padding: 16rpx 0; border-bottom: 1rpx solid #f2f3f5; }
+.my-task-title { flex: 1; margin: 0 16rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.logout { margin: 40rpx 24rpx; background: #f2f3f5; color: #86909c; border-radius: 44rpx; }

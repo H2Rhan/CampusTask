@@ -1,0 +1,43 @@
+<view class="card ai-box">
+  <view class="ai-title">✨ 说一句需求，AI 帮你发布</view>
+  <textarea class="ai-input" placeholder="例：下午五点去西门菜鸟驿站拿快递送到中海，给5块"
+    value="{{sentence}}" bindinput="onSentenceInput" auto-height maxlength="200" />
+  <button class="btn-primary ai-btn" loading="{{parsing}}" bindtap="aiParse">AI 智能解析</button>
+</view>
+
+<view class="card" wx:if="{{parsed}}">
+  <view class="section-title">任务信息</view>
+  <view class="missing" wx:if="{{missing.length}}">⚠️ 请补充：{{missing.join('、')}}</view>
+
+  <view class="field">
+    <text class="label">任务类型</text>
+    <picker range="{{types}}" value="{{typeIndex}}" bindchange="onTypeChange">
+      <view class="picker">{{form.task_type}} ›</view>
+    </picker>
+  </view>
+  <view class="field">
+    <text class="label">标题</text>
+    <input data-field="title" value="{{form.title}}" bindinput="onInput" placeholder="一句话说明任务" />
+  </view>
+  <view class="field required">
+    <text class="label">起点</text>
+    <input data-field="start" value="{{form.start}}" bindinput="onInput" placeholder="如：西门菜鸟驿站" />
+  </view>
+  <view class="field required">
+    <text class="label">终点</text>
+    <input data-field="destination" value="{{form.destination}}" bindinput="onInput" placeholder="如：中海国际宿舍区" />
+  </view>
+  <view class="field required">
+    <text class="label">悬赏(元)</text>
+    <input data-field="reward" type="digit" value="{{form.reward}}" bindinput="onInput" placeholder="3" />
+  </view>
+  <view class="field">
+    <text class="label">最晚完成</text>
+    <picker mode="time" value="{{form.deadline}}" bindchange="onTimeChange">
+      <view class="picker">{{form.deadline || '选择时间'}} ›</view>
+    </picker>
+  </view>
+
+  <button class="btn-primary publish-btn" loading="{{publishing}}" bindtap="publish">发布并冻结悬赏</button>
+  <view class="hint">发布后悬赏将从钱包冻结，验收后自动结算给接单者</view>
+</view>

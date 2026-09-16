@@ -1,0 +1,14 @@
+{
+  "description": "CampusTask · 邻行 —— 校园智能互助任务平台",
+  "appid": "touristappid",
+  "compileType": "miniprogram",
+  "libVersion": "3.4.0",
+  "setting": {
+    "es6": true,
+    "typescript": true,
+    "minified": true,
+    "postcss": true,
+    "urlCheck": false
+  },
+  "projectname": "CampusTask"
+}

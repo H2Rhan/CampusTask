@@ -1,0 +1,17 @@
+<scroll-view class="chat-list" scroll-y scroll-into-view="{{scrollId}}" scroll-with-animation>
+  <view wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}"
+    class="msg-row {{item.mine ? 'mine' : ''}} {{item.msg_type === 'system' ? 'system' : ''}}">
+    <view wx:if="{{item.msg_type === 'system'}}" class="system-msg">{{item.content}}</view>
+    <view wx:else class="bubble {{item.msg_type === 'quick' ? 'quick' : ''}}">{{item.content}}</view>
+  </view>
+</scroll-view>
+
+<view class="quick-bar">
+  <view wx:for="{{quickActions}}" wx:key="action" class="quick-btn"
+    data-action="{{item.action}}" bindtap="sendQuick">{{item.label}}</view>
+</view>
+
+<view class="input-bar">
+  <input class="msg-input" value="{{input}}" bindinput="onInput" placeholder="说点什么…" confirm-type="send" bindconfirm="send" />
+  <button class="send-btn" bindtap="send">发送</button>
+</view>

@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/publish/publish",
+    "pages/task-detail/task-detail",
+    "pages/chat/chat",
+    "pages/mine/mine",
+    "pages/wallet/wallet",
+    "pages/login/login"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#165DFF",
+    "navigationBarTitleText": "邻行 · 校园互助",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F6FA"
+  },
+  "tabBar": {
+    "color": "#86909C",
+    "selectedColor": "#165DFF",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "附近任务" },
+      { "pagePath": "pages/publish/publish", "text": "发布" },
+      { "pagePath": "pages/mine/mine", "text": "我的" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,44 @@
+<view class="header">
+  <view class="campus">🏫 南开大学 · 津南校区</view>
+  <view class="tabs">
+    <view class="tab {{tab === 'nearby' ? 'active' : ''}}" data-tab="nearby" bindtap="switchTab">附近任务</view>
+    <view class="tab {{tab === 'foryou' ? 'active' : ''}}" data-tab="foryou" bindtap="switchTab">
+      为我推荐 <text wx:if="{{recommended.length}}" class="badge">{{recommended.length}}</text>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{loading}}" class="empty">加载中…</view>
+
+<block wx:if="{{tab === 'nearby'}}">
+  <view wx:if="{{!tasks.length && !loading}}" class="empty">暂无待接单任务，去发布一个吧</view>
+  <view wx:for="{{tasks}}" wx:key="id" class="card task-card" data-id="{{item.id}}" bindtap="goDetail">
+    <view class="task-head">
+      <text class="tag">{{item.task_type}}</text>
+      <text class="title">{{item.title}}</text>
+    </view>
+    <view class="route">{{item.start_name}} → {{item.end_name}}</view>
+    <view class="meta">
+      <text class="muted">{{(item.distance / 1000).toFixed(1)}}km · 约{{item.est_minutes.toFixed(0)}}分钟</text>
+      <text class="price">¥{{item.reward}}</text>
+    </view>
+  </view>
+</block>
+
+<block wx:else>
+  <view wx:if="{{!recommended.length && !loading}}" class="empty">
+    登记你的日常路线后，系统会让「任务来找你」
+  </view>
+  <view wx:for="{{recommended}}" wx:key="id" class="card task-card" data-id="{{item.id}}" bindtap="goDetail">
+    <view class="task-head">
+      <text class="tag">{{item.task_type}}</text>
+      <text class="title">{{item.title}}</text>
+      <text class="{{matchClass(item.match_percent)}}">{{item.match_percent}}%</text>
+    </view>
+    <view class="route">{{item.start_name}} → {{item.end_name}}</view>
+    <view class="meta">
+      <text class="muted">{{item.match_reason}}</text>
+      <text class="price">¥{{item.reward}}</text>
+    </view>
+  </view>
+</block>

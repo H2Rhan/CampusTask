@@ -1,0 +1,40 @@
+<view class="profile card" wx:if="{{user}}">
+  <view class="name-row">
+    <text class="name">{{user.name}}</text>
+    <text wx:if="{{user.is_verified}}" class="verified">✔ 校园认证</text>
+  </view>
+  <view class="muted">{{user.college}}</view>
+  <view class="credit-row">
+    <view class="credit-item"><text class="num">{{user.credit_score.toFixed(0)}}</text><text class="lbl">信用分</text></view>
+    <view class="credit-item"><text class="num">{{user.tasks_completed}}</text><text class="lbl">完成任务</text></view>
+    <view class="credit-item"><text class="num">{{(user.good_rate * 100).toFixed(0)}}%</text><text class="lbl">好评率</text></view>
+  </view>
+</view>
+
+<view class="card wallet-card" bindtap="goWallet">
+  <view>
+    <view class="muted">我的钱包 ›</view>
+    <view class="balance">¥{{wallet.balance.toFixed(2)}} <text class="frozen">冻结 ¥{{wallet.frozen.toFixed(2)}}</text></view>
+  </view>
+</view>
+
+<view class="card">
+  <view class="section-title">我的日常路线（让任务来找我）</view>
+  <view wx:for="{{routes}}" wx:key="id" class="route-item">🚶 {{item.waypoint_names.join(' → ')}}</view>
+  <view class="route-input-row">
+    <input class="route-input" placeholder="如：宿舍16斋,学二食堂,图书馆" value="{{routeInput}}" bindinput="onRouteInput" />
+    <button class="add-btn" bindtap="addRoute">登记</button>
+  </view>
+</view>
+
+<view class="card">
+  <view class="section-title">我的任务</view>
+  <view wx:if="{{!myTasks.length}}" class="muted">暂无任务</view>
+  <view wx:for="{{myTasks}}" wx:key="id" class="my-task" data-id="{{item.id}}" bindtap="goDetail">
+    <text class="tag">{{item.task_type}}</text>
+    <text class="my-task-title">{{item.title}}</text>
+    <text class="muted">{{item.status}}</text>
+  </view>
+</view>
+
+<button class="logout" bindtap="logout">退出登录</button>

@@ -1,0 +1,50 @@
+/* 全局样式：清爽校园蓝主题 */
+page {
+  background: #f5f6fa;
+  font-size: 28rpx;
+  color: #1d2129;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20rpx;
+  margin: 24rpx;
+  padding: 28rpx;
+  box-shadow: 0 4rpx 16rpx rgba(22, 93, 255, 0.06);
+}
+
+.btn-primary {
+  background: #165dff;
+  color: #fff;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+}
+
+.btn-primary[disabled] {
+  background: #94bfff;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  background: #e8f0ff;
+  color: #165dff;
+  margin-right: 12rpx;
+}
+
+.price {
+  color: #f53f3f;
+  font-weight: 600;
+}
+
+.muted {
+  color: #86909c;
+  font-size: 24rpx;
+}
+
+.match-high { color: #00b42a; font-weight: 600; }
+.match-mid { color: #ff7d00; font-weight: 600; }
+.match-low { color: #86909c; }

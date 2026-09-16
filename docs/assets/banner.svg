@@ -1,0 +1,55 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CampusTask banner">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0E3BD6"/>
+      <stop offset="0.55" stop-color="#165DFF"/>
+      <stop offset="1" stop-color="#4096FF"/>
+    </linearGradient>
+    <linearGradient id="route" x1="640" y1="260" x2="1120" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7FE7C4"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="320" rx="24" fill="url(#bg)"/>
+
+  <!-- decorative circles -->
+  <circle cx="1080" cy="40" r="140" fill="#FFFFFF" opacity="0.08" filter="url(#soft)"/>
+  <circle cx="140" cy="300" r="120" fill="#7FE7C4" opacity="0.10" filter="url(#soft)"/>
+
+  <!-- campus route motif -->
+  <g opacity="0.95">
+    <path d="M700 250 C 790 240, 830 190, 900 170 S 1030 110, 1100 80" stroke="url(#route)" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 14"/>
+    <circle cx="700" cy="250" r="10" fill="#7FE7C4"/>
+    <circle cx="900" cy="170" r="8" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="1100" cy="80" r="10" fill="#FFFFFF"/>
+    <!-- pin -->
+    <g transform="translate(1100 80)">
+      <path d="M0 -26 C 12 -26, 20 -17, 20 -7 C 20 5, 0 18, 0 18 C 0 18, -20 5, -20 -7 C -20 -17, -12 -26, 0 -26 Z" fill="#FFCF5C"/>
+      <circle cx="0" cy="-8" r="6" fill="#0E3BD6"/>
+    </g>
+    <text x="700" y="290" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#CDE4FF">宿舍</text>
+    <text x="900" y="210" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#CDE4FF">图书馆</text>
+    <text x="1020" y="50" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#FFFFFF">任务终点</text>
+  </g>
+
+  <!-- wordmark -->
+  <text x="80" y="132" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="72" font-weight="700" fill="#FFFFFF">邻行</text>
+  <text x="80" y="182" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="34" font-weight="600" letter-spacing="4" fill="#BFE0FF">CAMPUSTASK</text>
+  <text x="80" y="240" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="26" fill="#EAF4FF">校园智能互助任务平台 · 让任务来找顺路的你</text>
+
+  <!-- chips -->
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#0E3BD6">
+    <rect x="80" y="266" width="118" height="34" rx="17" fill="#FFFFFF" opacity="0.95"/>
+    <text x="104" y="289">AI 任务理解</text>
+    <rect x="212" y="266" width="118" height="34" rx="17" fill="#FFFFFF" opacity="0.95"/>
+    <text x="236" y="289">边际成本匹配</text>
+    <rect x="344" y="266" width="118" height="34" rx="17" fill="#FFFFFF" opacity="0.95"/>
+    <text x="368" y="289">校园数字地图</text>
+    <rect x="476" y="266" width="118" height="34" rx="17" fill="#FFFFFF" opacity="0.95"/>
+    <text x="500" y="289">可信交易仲裁</text>
+  </g>
+</svg>

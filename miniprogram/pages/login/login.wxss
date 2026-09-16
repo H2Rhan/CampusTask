@@ -1,0 +1,15 @@
+.login-page { padding-top: 120rpx; }
+.brand { text-align: center; margin-bottom: 60rpx; }
+.logo {
+  display: inline-block;
+  background: linear-gradient(135deg, #165dff, #4080ff);
+  color: #fff;
+  font-size: 48rpx;
+  font-weight: 700;
+  border-radius: 28rpx;
+  padding: 28rpx 48rpx;
+}
+.slogan { color: #86909c; margin-top: 20rpx; font-size: 26rpx; }
+.field { border-bottom: 1rpx solid #f2f3f5; padding: 24rpx 0; }
+.submit { margin-top: 40rpx; }
+.switch { text-align: center; color: #165dff; margin-top: 24rpx; font-size: 26rpx; }

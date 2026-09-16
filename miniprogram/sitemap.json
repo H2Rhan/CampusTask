@@ -1,0 +1,4 @@
+{
+  "desc": "CampusTask sitemap",
+  "rules": [{ "action": "allow", "page": "*" }]
+}

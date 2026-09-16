@@ -1,0 +1,43 @@
+<view wx:if="{{task}}">
+  <view class="card hero">
+    <view class="status-badge status-{{task.status}}">{{statusText}}</view>
+    <view class="title">{{task.title}}</view>
+    <view class="route">{{task.start_name}} → {{task.end_name}}</view>
+    <view class="meta-row">
+      <text class="muted">{{(task.distance / 1000).toFixed(1)}}km · 约{{task.est_minutes.toFixed(0)}}分钟</text>
+      <text class="price big">¥{{task.reward}}</text>
+    </view>
+    <view class="match" wx:if="{{task.match_percent}}">顺路匹配 {{task.match_percent}}% · {{task.match_reason}}</view>
+  </view>
+
+  <view class="card" wx:if="{{task.description}}">
+    <view class="section-title">任务描述</view>
+    <view class="desc">{{task.description}}</view>
+  </view>
+
+  <!-- 操作区：按角色与状态渲染 -->
+  <view class="actions">
+    <button wx:if="{{task.status === 'PENDING' && !isPublisher}}" class="btn-primary" bindtap="accept">立即接单</button>
+    <button wx:if="{{nextAction}}" class="btn-primary" bindtap="advance">{{nextAction.label}}</button>
+    <button wx:if="{{isPublisher && task.status === 'PENDING_CONFIRM'}}" class="btn-primary" bindtap="confirm">确认验收并结算</button>
+    <button wx:if="{{(isAccepter || isPublisher) && task.accepter_id}}" class="btn-chat" bindtap="goChat">💬 任务聊天</button>
+    <view class="action-row">
+      <button wx:if="{{task.status === 'PENDING' && isPublisher}}" class="btn-ghost" bindtap="cancel">取消任务</button>
+      <button wx:if="{{(isAccepter || isPublisher) && task.status !== 'SETTLED' && task.status !== 'CANCELLED' && task.status !== 'PENDING' && task.status !== 'ARBITRATING'}}"
+        class="btn-ghost warn" bindtap="arbitrate">申请仲裁</button>
+    </view>
+  </view>
+
+  <!-- 评价弹层 -->
+  <view class="review-mask" wx:if="{{showReview}}">
+    <form class="review-card" bindsubmit="submitReview">
+      <view class="section-title">为对方评价</view>
+      <view class="stars">
+        <text wx:for="{{[1,2,3,4,5]}}" wx:key="*this" data-value="{{item}}" bindtap="onRate"
+          class="star {{rating >= item ? 'on' : ''}}">★</text>
+      </view>
+      <textarea name="comment" placeholder="说点什么（可选）" class="review-input" />
+      <button form-type="submit" class="btn-primary">提交评价</button>
+    </form>
+  </view>
+</view>
