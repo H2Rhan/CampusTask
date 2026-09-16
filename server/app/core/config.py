@@ -23,6 +23,10 @@ class Settings(BaseSettings):
     llm_model: str = "gpt-4o-mini"
     llm_timeout_seconds: float = 15.0
 
+    # 微信小程序登录（不配置时启用 dev 通道：code 传 "dev-{学号}"）
+    wx_appid: str = ""
+    wx_secret: str = ""
+
     @property
     def llm_enabled(self) -> bool:
         return bool(self.llm_api_key)

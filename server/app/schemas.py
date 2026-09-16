@@ -23,6 +23,14 @@ class LoginIn(BaseModel):
     password: str
 
 
+class WechatLoginIn(BaseModel):
+    code: str = Field(min_length=2, description="wx.login 返回的 code；开发环境传 dev-{学号}")
+    # 新用户首次登录时一并提交（与校园身份绑定）
+    student_no: str = ""
+    name: str = ""
+    college: str = ""
+
+
 class TokenOut(BaseModel):
     access_token: str
     token_type: str = "bearer"
@@ -222,6 +230,23 @@ class ArbitrationOut(BaseModel):
     resolved_at: Optional[datetime]
 
     model_config = {"from_attributes": True}
+
+
+# ---------------------------------------------------------------- batch assign / stats
+class BatchAssignmentItem(BaseModel):
+    task_id: int
+    task_title: str
+    user_id: int
+    user_name: str
+    marginal_distance: float
+    marginal_minutes: float
+
+
+class BatchAssignOut(BaseModel):
+    assignments: list[BatchAssignmentItem]
+    total_marginal_distance: float
+    total_marginal_minutes: float
+    unassigned_task_ids: list[int]
 
 
 # ---------------------------------------------------------------- chat

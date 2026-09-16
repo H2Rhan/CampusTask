@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/微信小程序-TypeScript-07C160?logo=wechat&logoColor=white" alt="WeChat"/>
   <img src="https://img.shields.io/badge/MySQL-8.4-4479A1?logo=mysql&logoColor=white" alt="MySQL"/>
   <img src="https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white" alt="Docker"/>
-  <img src="https://img.shields.io/badge/tests-26%20passed-00B42A" alt="tests"/>
+  <img src="https://img.shields.io/badge/tests-35%20passed-00B42A" alt="tests"/>
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="license"/>
 </p>
 
@@ -84,9 +84,11 @@
 | 任务状态机 | 9 主状态 + 仲裁分支，服务端强校验 | ✅ |
 | 实时聊天 | WebSocket 任务聊天室、快捷操作驱动状态机、结束自动归档 | ✅ |
 | 虚拟钱包 | 发布冻结 → 验收结算 → 仲裁冻结，流水可审计 | ✅ |
-| 仲裁系统 | 证据时间线 + 规则引擎裁决建议 + 管理员裁决 | ✅ |
+| 仲裁系统 | 证据时间线 + 规则引擎裁决建议 + 管理员裁决/工作台 | ✅ |
 | 信用体系 | 信用分奖惩、好评率、低信用接单限制 | ✅ |
-| 微信登录 | code2session 一键登录 | 🗓 W6 |
+| 批量调度 | 匈牙利算法：全校任务总边际成本最小化分配（数维杯算法线） | ✅ |
+| 运营看板 | 注册/接单率/完成率/均时/复购率/仲裁率 实时统计（三创赛数据线） | ✅ |
+| 微信登录 | code2session 一键登录（dev 通道已通，待配置真实 AppID） | ✅ |
 | 鸿蒙版本 | HarmonyOS 原生应用（C4-AI 方向） | 🗓 规划中 |
 
 ## 🏗 系统架构
@@ -198,7 +200,7 @@ docker compose up -d --build
 ### 运行测试
 
 ```bash
-cd server && pytest        # 26 passed：图算法 / 匹配 / 状态机 / 钱包 / 仲裁 / 端到端 API
+cd server && pytest        # 35 passed：图算法 / 匹配 / 匈牙利分配 / 状态机 / 钱包 / 仲裁 / 端到端 API
 ```
 
 ## 📡 API 一览
@@ -211,6 +213,8 @@ cd server && pytest        # 26 passed：图算法 / 匹配 / 状态机 / 钱包
 | 任务 | `POST /tasks` · `GET /tasks` · `POST /tasks/{id}/accept` | 发布（冻结悬赏）/ 大厅 / 接单 |
 | 任务 | `POST /tasks/{id}/advance` · `/confirm` · `/cancel` · `/review` | 状态推进 / 验收结算 / 取消 / 评价 |
 | 匹配 | `GET /match/tasks/{id}/candidates` · `GET /match/for-me` | 为任务找人 / 任务找我 |
+| 调度 | `GET /match/batch-assign` | 批量分配：全校总边际成本最小（匈牙利） |
+| 看板 | `GET /stats/overview` | 运营数据看板（复购率/完成率/仲裁率…） |
 | 地图 | `GET /map/nodes` · `/map/edges` · `/map/route` · `/map/resolve` | 校园图与路径 |
 | 钱包 | `GET /wallet/me` · `POST /wallet/recharge` · `GET /wallet/transactions` | 余额 / 充值 / 流水 |
 | 仲裁 | `POST /tasks/{id}/arbitrate` · `POST /arbitrations/{id}/evidence` · `/resolve` | 发起 / 证据 / 裁决 |
@@ -228,6 +232,8 @@ CampusTask/
 │   ├── ARCHITECTURE.md        # 系统架构设计
 │   ├── ROADMAP.md             # 10 周计划 + 3 人分工
 │   ├── COMPETITION.md         # 华为ICT / 数维杯 / 创新创业赛布局
+│   ├── BUSINESS_PLAN.md       # 商业计划书框架（经开杯，待内测数据填充）
+│   ├── DEMO_SCRIPT.md         # 答辩演示脚本 + 评委问答预案
 │   └── assets/banner.svg
 ├── server/                    # FastAPI 后端
 │   ├── app/

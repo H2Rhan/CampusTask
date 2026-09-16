@@ -36,6 +36,16 @@ def open_arbitration(task_id: int, payload: ArbitrationOpenIn, me: User = Depend
         raise HTTPException(400, str(e))
 
 
+@router.get("/arbitrations", response_model=list[ArbitrationOut], summary="仲裁列表（管理员工作台）")
+def list_arbitrations(status: str | None = None, me: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    if not _is_admin(me):
+        raise HTTPException(403, "只有平台管理员可以查看仲裁列表")
+    q = db.query(Arbitration)
+    if status:
+        q = q.filter(Arbitration.status == status)
+    return q.order_by(Arbitration.created_at.desc()).limit(100).all()
+
+
 @router.get("/arbitrations/{arb_id}", response_model=ArbitrationOut, summary="仲裁详情")
 def get_arbitration(arb_id: int, me: User = Depends(get_current_user), db: Session = Depends(get_db)):
     arb = db.get(Arbitration, arb_id)
